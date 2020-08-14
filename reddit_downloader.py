@@ -73,16 +73,22 @@ class DownloadUrls:
 
 
 if __name__ == "__main__":
+    # Get filename and directory from config
     FILENAME = config.filename
     DIRECTORY = config.directory
 
+    # Make GetUrls object and give it filename
     geturls = GetUrls(FILENAME)
+    # Parse and Extract urls
     geturls.parse_urls()
     geturls.extract_url()
+    # Gets urls list and give to download obejct
     urls = geturls.image_urls
 
+    # Setup directory
     _setup = Setup(DIRECTORY)
     _setup.setup()
 
+    # Make download object and download list of urls
     _dowload = DownloadUrls(urls, DIRECTORY)
     _dowload.download()
